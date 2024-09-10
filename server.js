@@ -10,7 +10,8 @@ const app = Fastify({
     transport: {
       target: "pino-pretty"
     }
-  }
+  },
+  trustProxy: process.env.NODE_ENV === "production"
 })
 
 app.register(appService)
@@ -24,7 +25,10 @@ closeWithGrace({ delay: 500 }, async function ({ err }) {
 )
 
 // Start listening.
-app.listen({ port: Number(process.env.PORT || 3000) }, (err) => {
+app.listen({ 
+  port: Number(process.env.PORT || 3000),
+  host: process.env.HOST || "localhost",
+}, (err) => {
   if (err) {
     app.log.error(err)
     process.exit(1)

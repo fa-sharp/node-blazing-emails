@@ -14,6 +14,7 @@
         "mrml": "^1.4.12"
     },
     "devDependencies": {
+        "@flydotio/dockerfile": "^0.5.8",
         "@types/node": "^22.5.4",
         "pino-pretty": "^11.2.2"
     },

@@ -1,0 +1,29 @@
+# fly.toml app configuration file generated for node-blazing-emails on 2024-09-10T04:52:11-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'node-blazing-emails'
+primary_region = 'ewr'
+
+[env]
+  PORT = "3000"
+  HOST = "0.0.0.0"
+  NODE_ENV = "production"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[statics]]
+  guest_path = "/app/public"
+  url_prefix = "/public"
+
+[[vm]]
+  memory = '512mb'
+  cpu_kind = 'shared'
+  cpus = 1
