@@ -1,7 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head></head>
+  <head>
+    <link rel="stylesheet" href="public/style.css">
+  </head>
   <body>
-    <p>Hello, <%= it.name || "there" %>!</p>
+    <p>
+      Hello, <%= it.name || "there" %>! Enter the data for this email below:
+    </p>
+      <form class="flex-col" method="post">
+        <label>
+          Customer name:
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          App name:
+          <input type="text" value="Friendly Tasks App" name="appName" required />
+        </label>
+        <% const taskNums = [1,2,3]; taskNums.forEach(taskNum => { %>
+        <fieldset>
+          <legend>Task <%= taskNum %></legend>
+          <label>
+            Description:
+            <input type="text" name="description<%= taskNum %>" />
+          </label>
+          <label>
+            Priority:
+            <input type="number" min="1" name="priority<%= taskNum %>" value="<%= taskNum %>" />
+          </label>
+          <label>
+            Due date:
+            <input type="date" name="dueDate<%= taskNum %>" />
+          </label>
+        </fieldset>
+        <% }) %>
+        <div>
+          <button type="submit">Generate email</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
   </body>
 </html>

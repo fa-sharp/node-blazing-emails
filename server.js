@@ -15,12 +15,7 @@ const app = Fastify({
 
 app.register(appService)
 
-closeWithGrace(
-  { 
-    delay: Number(process.env.FASTIFY_CLOSE_GRACE_DELAY || 500),
-    logger: app.log
-  }, 
-  async function ({ signal, err, manual }) {
+closeWithGrace({ delay: 500 }, async function ({ err }) {
     if (err) {
       app.log.error(err)
     }

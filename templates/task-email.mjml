@@ -1,0 +1,50 @@
+<mjml>
+  <mj-head>
+    <mj-preview>Tasks for today</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="Helvetica Neue" />
+      <mj-text padding="8px" />
+      <mj-class name="font-lg" font-size="20px" />
+      <mj-class name="paragraph" line-height="1.5" />
+      <mj-class name="p-md" padding="6px" />
+      <mj-class name="bold" font-weight="600" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#fff">
+    <mj-section mj-class="p-md">
+      <mj-column>
+        <mj-text mj-class="font-lg">
+          Hi <%= it.name %>!
+        </mj-text>
+        <mj-text mj-class="paragraph">
+          <%= it.appName %> here! This is your friendly reminder for these tasks:
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="p-md">
+      <mj-column>
+        <mj-table>
+          <tr style="border-bottom:1px solid #bbb;text-align:left;padding:15px 0;">
+            <th>Task</th>
+            <th width="50px" style="padding: 0 15px;">Priority</th>
+            <th style="padding: 0 0 0 15px;">Due date</th>
+          </tr>
+          <% it.tasks.forEach(({ priority, dueDate, description }) => { %>
+            <tr>
+              <td><%= description %></td>
+              <td width="50px" style="padding: 0 15px;"><%= priority %></td>
+              <td style="padding: 0 0 0 15px;"><%= dueDate %></td>
+            </tr>
+          <% }) %>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="p-md">
+      <mj-column>
+        <mj-text mj-class="bold">
+          Good luck!!
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

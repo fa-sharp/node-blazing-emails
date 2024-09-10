@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="public/style.css">
+  </head>
+  <body>
+    <div class="flex-row justify-between">
+      <div>
+        ⚡️ Rendered in: <%= Math.round(it.renderTime * 1000) / 1000 %> ms
+      </div>
+      <a href="/">Back to form</a>
+    </div>
+    <h3>Email data</h3>
+    <ul>
+      <li>
+        App name: <%= it.appName %>
+      </li>
+      <li>
+        Customer name: <%= it.name %>
+      </li>
+      <% it.tasks.forEach((task, idx) => { %>
+        <li>
+          Task <%= idx + 1 %>: <%= task.description %>, priority <%= task.priority %>, due <%= task.dueDate %> 
+        </li>
+      <% }) %>
+    </ul>
+
+    <h3>Email preview</h3>
+    <div class="email-preview">
+      <%~ /<body[^>]*>((.|[\n\r])*)<\/body>/im.exec(it.emailHtml)[1] %>
+    </div>
+    <h3>Email Code</h3>
+    <code class="email-code">
+      <%= it.emailHtml %>
+    </code>
+  </body>
+</html>

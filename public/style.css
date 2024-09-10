@@ -1,3 +1,34 @@
 html {
   font-size: 100%;
 }
+
+body {
+  max-width: 85ch;
+  margin: auto;
+  padding: 1rem;
+}
+
+fieldset {
+  border: solid 1px gray;
+  border-radius: 5px;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.email-preview {
+  padding: 4px;
+  border: dotted 1px gray;
+  border-radius: 10px;
+}
